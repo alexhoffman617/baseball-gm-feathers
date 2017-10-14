@@ -1,0 +1,11 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 100000,
+    "max": 100000
+  },
+  "nedb": "../data",
+  "mongodb": "mongodb://website:password@ds129344.mlab.com:29344/baseball-gm"
+}
