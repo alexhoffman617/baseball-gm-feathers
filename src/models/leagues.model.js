@@ -1,12 +1,15 @@
-const NeDB = require('nedb');
-const path = require('path');
-
+// leagues-model.js - A mongoose model
+// 
+// See http://mongoosejs.com/docs/models.html
+// for more of what you can do here.
 module.exports = function (app) {
-  const dbPath = app.get('nedb');
-  const Model = new NeDB({
-    filename: path.join(dbPath, 'leagues.db'),
-    autoload: true
+  const mongooseClient = app.get('mongooseClient');
+  const { Schema } = mongooseClient;
+  const leagues = new Schema({
+    text: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now }
   });
 
-  return Model;
+  return mongooseClient.model('leagues', leagues);
 };
